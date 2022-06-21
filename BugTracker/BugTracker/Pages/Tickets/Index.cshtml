@@ -10,6 +10,13 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -20,7 +27,7 @@
                 @Html.DisplayNameFor(model => model.Ticket[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ticket[0].TestNewField)
+                @Html.DisplayNameFor(model => model.Ticket[0].Priority)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ticket[0].DateUpdated)
@@ -41,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TestNewField)
+                @Html.DisplayFor(modelItem => item.Priority)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateUpdated)
@@ -50,9 +57,9 @@
                 @Html.DisplayFor(modelItem => item.DateCreated)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.TicketID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TicketID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TicketID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BugTracker.Data;
 using BugTracker.Models;
@@ -19,14 +20,25 @@ namespace BugTracker.Pages.Tickets
             _context = context;
         }
 
-        public IList<Ticket> Ticket { get;set; } = default!;
+        public IList<Ticket> Ticket { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        public SelectList Statuses { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string TicketStatus { get; set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Ticket != null)
+            var tickets = from t in _context.Tickets select t;
+
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                Ticket = await _context.Ticket.ToListAsync();
+                tickets = tickets.Where(s => s.Title.Contains(SearchString));
             }
+
+            Ticket = await tickets.ToListAsync();
         }
     }
 }

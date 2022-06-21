@@ -20,22 +20,22 @@ namespace BugTracker.Pages.Tickets
         }
 
         [BindProperty]
-      public Ticket Ticket { get; set; } = default!;
+        public Ticket Ticket { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Ticket == null)
+            if (id == null || _context.Tickets == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket.FirstOrDefaultAsync(m => m.TicketID == id);
+            var ticket = await _context.Tickets.FirstOrDefaultAsync(m => m.ID == id);
 
             if (ticket == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Ticket = ticket;
             }
@@ -44,16 +44,16 @@ namespace BugTracker.Pages.Tickets
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Ticket == null)
+            if (id == null || _context.Tickets == null)
             {
                 return NotFound();
             }
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = await _context.Tickets.FindAsync(id);
 
             if (ticket != null)
             {
                 Ticket = ticket;
-                _context.Ticket.Remove(Ticket);
+                _context.Tickets.Remove(Ticket);
                 await _context.SaveChangesAsync();
             }
 

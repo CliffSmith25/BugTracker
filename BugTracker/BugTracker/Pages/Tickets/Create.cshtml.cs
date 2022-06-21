@@ -26,17 +26,17 @@ namespace BugTracker.Pages.Tickets
 
         [BindProperty]
         public Ticket Ticket { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Ticket == null || Ticket == null)
+            if (!ModelState.IsValid || _context.Tickets == null || Ticket == null)
             {
                 return Page();
             }
 
-            _context.Ticket.Add(Ticket);
+            _context.Tickets.Add(Ticket);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

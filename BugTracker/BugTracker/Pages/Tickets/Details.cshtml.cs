@@ -19,21 +19,21 @@ namespace BugTracker.Pages.Tickets
             _context = context;
         }
 
-      public Ticket Ticket { get; set; } = default!; 
+        public Ticket Ticket { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Ticket == null)
+            if (id == null || _context.Tickets == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket.FirstOrDefaultAsync(m => m.TicketID == id);
+            var ticket = await _context.Tickets.FirstOrDefaultAsync(m => m.ID == id);
             if (ticket == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Ticket = ticket;
             }

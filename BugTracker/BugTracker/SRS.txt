@@ -1,0 +1,51 @@
+﻿test
+
+1. Introduction:
+    1.1 Purpose of this product -
+        The purpose of this product is to create a bug tracking application.
+
+    1.2 Scope of this project -
+        This project will be a complete online bug tracking tool and allow for users to log in, create bug tickets, and track them.
+
+    1.3 Overview -
+        The bug tracker should allow for the user to log in and report a bug, as well as see the status of their ticket.
+        The bug tracker will allow for the assigning of tickets, lifestyle progression of the ticket, history, work logs, and reports.
+
+2. General description:
+    2.1 - User needs
+        2.1.1 - Log in - users need to be able to log in, this can be achieved with a third party service like auth0
+        2.1.2 - Create ticket - users need to be able to create a new ticket
+        2.1.3 - Track ticket - users need to be able to track the status of a ticket
+        2.1.4 - Assign ticket - tickets need to be able to be assigned to be worked
+        2.1.5 - Life cycle - ticket needs a complete life cycle
+            2.1.5.1 - New - brand new tickets
+            2.1.5.2 - Rejected - tickets must be rejectable
+            2.1.5.3 - Open - open status is in work
+            2.1.5.4 - Deferred - tickets should be able to be deferred to automatically return to queue at later date
+            2.1.5.5 - Fixed - user can mark fixed when ticket is ready for testing
+            2.1.5.6 - Retest - tests the bug to see if it was actually fixed
+            2.1.5.7 - Reopen - kick the ticket back into the open queue assigned to previous tech
+            2.1.5.8 - Closed - testing shows it is complete and is marked closed
+            2.1.5.9 - Duplicate - if this is already a known ticket, mark it duplicate and link it to the original
+        
+3. System Features and Requirements
+    3.1 Functional Requirements:
+        3.1.1 - Sign in using Auth0
+        3.1.2 - Implement full ticket lifecycle
+        3.1.3 - Create and manage tickets
+        3.1.4 - Use an MS SQL database to store ticket information
+        3.1.5 - Must perform all CRUD actions on database
+        3.1.6 - Needs user roles
+            3.1.6.1 - Admin - full access to add/modify/remove users and tickets
+            3.1.6.2 - Tech - can perform certain actions on tickets but cannot delete
+            3.1.6.3 - Users - can create tickets and leave messages on their own already created tickets
+    3.2 External Interface Requirementss
+        3.2.1 - Work on mobile and desktop
+    3.3 Platform:
+        3.3.1 - .Net
+        3.3.2 - C#
+        3.3.3 - MVC design pattern
+        3.3.4 - UI will be built on bootstrap template
+        3.3.5 - MS SQL for database
+
+

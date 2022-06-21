@@ -25,12 +25,12 @@ namespace BugTracker.Pages.Tickets
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Ticket == null)
+            if (id == null || _context.Tickets == null)
             {
                 return NotFound();
             }
 
-            var ticket =  await _context.Ticket.FirstOrDefaultAsync(m => m.TicketID == id);
+            var ticket = await _context.Tickets.FirstOrDefaultAsync(m => m.ID == id);
             if (ticket == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace BugTracker.Pages.Tickets
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TicketExists(Ticket.TicketID))
+                if (!TicketExists(Ticket.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace BugTracker.Pages.Tickets
 
         private bool TicketExists(int id)
         {
-          return (_context.Ticket?.Any(e => e.TicketID == id)).GetValueOrDefault();
+            return (_context.Tickets?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
